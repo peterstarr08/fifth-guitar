@@ -9,7 +9,7 @@ export default function Improviser() {
     const data = [["", "Am", "", "G"], ["FM7", "Fm7", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "Am", "", "G"], ["FM7", "Fm7", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "Am", "", "G"],
     ["FM7", "Fm7", "", ""], ["", "", "", ""], ["", "", "", ""], ["FM7", "Fm7", "", ""], ["", "", "", ""], ["", "", "", ""], ["FM7", "Fm7", "", ""], ["", "", "", ""], ["", "", "", ""]];// temporary holder for data
     const [currentTime, setCurrentTime] = useState(0); //time keeper for player
-
+    const [rangePicker, setRangePicker] = useState([1,3,3,7]); // range picker for strings and frets substrings to show
 
     function handleScroll(event) {
 
@@ -17,9 +17,9 @@ export default function Improviser() {
 
     return (
         <>  
-            <Controller></Controller>
+            <Controller range={rangePicker} handlePicker={{setRangePicker}}></Controller>
             <main>
-
+                
                 <section className='grid grid-cols-12'>
                     <div className='col-span-4'>
                         <Player timeHandler={setCurrentTime}></Player>
@@ -34,9 +34,9 @@ export default function Improviser() {
                     <Timeline data={data}></Timeline>
                 </div>
                 <div className="overflow-auto my-4">
-                    <section className="flex flex-col gap-4">
-                        <Fretboard keyToShow={"A"} scaleToShow={"minor"}></Fretboard>
-                        <Fretboard keyToShow={"E"} scaleToShow={"major"}></Fretboard>
+                    <section className="flex flex-col gap-4 pb-72">
+                        <Fretboard keyToShow={"A"} scaleToShow={"minor"} range={rangePicker}></Fretboard>
+                        <Fretboard keyToShow={"E"} scaleToShow={"major"} range={rangePicker}></Fretboard>
                     </section>
                 </div>
             </main>
