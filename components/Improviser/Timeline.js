@@ -14,7 +14,6 @@ export default function Timeline({ data, position }) {
 
     return (
         <>
-            Timeline
             <section className="w-fit h-fit flex flex-row justify-start">
                 {_data}
             </section>
