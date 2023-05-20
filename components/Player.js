@@ -4,8 +4,9 @@ import YouTube from 'react-youtube'
 //YT player and current time subscriber.
 //Param:
 //timeHandler: uses this handler to set current time of parent prop
-export default function Player({ timeHandler }) {
+export default function Player({ timeHandler, metaData, currentBeat ,beatHandler, timeUpdate, timeUpdateHandler, YTData}) {
 
+  
     var _ID = useRef(null);//uses setInterval to store ID for time subscriber
 
     //opts for size of YT player
@@ -19,10 +20,20 @@ export default function Player({ timeHandler }) {
         if (_ID.current == null) {
             _ID.current = setInterval(
                 () => {
-                    timeHandler(event.target.getCurrentTime());
+                    let currentTime = event.target.getCurrentTime();
+
+
+                    timeHandler(currentTime);
+                    
+                    beatHandler(Math.floor((currentTime+metaData[2])/(60/metaData[0])));
+                    
                 }
-                , 10);
+                , 60);
         }
+    }
+
+    function onReady(e){
+        YTData(e.target);
     }
 
     // function handlePause(evet){
@@ -33,6 +44,6 @@ export default function Player({ timeHandler }) {
     // }
 
     return (
-        <YouTube onPlay={handlePlay}  opts={opts} videoId={"HXuAqmwM3C4"}></YouTube>
+        <YouTube onPlay={handlePlay} opts={opts} videoId={"HXuAqmwM3C4"} onReady={onReady}></YouTube>
     );
 }

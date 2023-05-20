@@ -1,10 +1,15 @@
 import RootNote from "./Notes/RootNote";
 import EmptyNote from "./Notes/EmptyNote";
 import { useRef } from "react";
+import { CHORD_FORMULA } from "@/data/constants";
+import ChordNote from "./Notes/ChordNote";
 
 function generateNote(note, isOpenFret = false, showEmpty=false) {
     if(showEmpty){
         return <EmptyNote isOpenFret={isOpenFret}></EmptyNote>
+    }
+    if(note["chordToneIndex"]){
+        return <ChordNote isOpenFret={isOpenFret}>{note.name}</ChordNote>
     }
     if (note["isScaleTone"]) {
         return <RootNote isOpenFret={isOpenFret}>{note.name}</RootNote>
@@ -32,10 +37,6 @@ export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, 
         "eStandard": ["E4", "B3", "G3", "D3", "A2", "E2"],
     });
 
-    const chords = useRef({
-        "M": [0, 4, 7],
-        "m": [0, 3, 7],
-    });
 
     const scales = useRef(
         {
@@ -75,10 +76,11 @@ export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, 
     var _chordsFormula = null; //null because chordToShow could be a null value
     const chord = [];
     if (chordToShow != null) {//checks if it's not null
-        _chordsFormula = chords.current[chordToShow];
+        let _chordKey = chordToShow.slice(0,1);
+        _chordsFormula =CHORD_FORMULA[chordToShow.slice(1)];
         for (let i = 0; i < _chordsFormula.length; i++){//loops over chord formula
             if (chordNotesIncluded[i]) {    //only include if the chordNotesIncluded array contains true for that particular note.
-                chord.push(noteIncrementer(key, _chordsFormula[i]));  //increment the key by chord formula and push it into chord notes array.
+                chord.push(noteIncrementer(_chordKey, _chordsFormula[i]));  //increment the key by chord formula and push it into chord notes array.
             }
 
         }
@@ -101,7 +103,7 @@ export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, 
                     {   //self explanatory
                         "name": openNote,
                         "octave": openOctave,
-                        "chordToneIndex": chord.indexOf(openNote),
+                        "chordToneIndex": chord.indexOf(openNote)>=0,
                         "isScaleTone": scale.indexOf(openNote) >= 0,
                     }
                 );
@@ -116,7 +118,7 @@ export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, 
                 {   //self exaplanatory
                     "name": nextNote,
                     "octave": openOctave,
-                    "chordToneIndex": chord.indexOf(nextNote),
+                    "chordToneIndex": chord.indexOf(nextNote)>=0,
                     "isScaleTone": scale.indexOf(nextNote) >= 0,
 
                 }
