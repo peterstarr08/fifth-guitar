@@ -17,9 +17,9 @@ export default function Timeline({ data, position, clickHandler, isPlaying }) {
     useEffect(
         () => {
 
-            if(!isPlaying){
+            if (!isPlaying) {
                 clearInterval(animID.current);
-                animID.current=null;
+                animID.current = null;
                 return;
             }
 
@@ -28,35 +28,33 @@ export default function Timeline({ data, position, clickHandler, isPlaying }) {
                     () => {
                         var ref = document.querySelectorAll("#ab")[0];
                         var container = document.querySelectorAll("#timeLineContainer")[0];
-                        // if (ref != null && container != null) {
-                        //     if ((ref.offsetLeft > container.scrollLeft+container.offsetWidth*(5/10))&&(ref.offsetLeft>container.scrollLeft&&ref.offsetLeft<container.scrollLeft+container.offsetWidth)) {
-                        //         container.scrollBy(10, 0);
-                        //     }
+                        if (ref != null && container != null) {
 
-                        // }
-
-                        if(ref.offsetLeft>container.scrollLeft&&ref.offsetLeft<container.scrollLeft+container.offsetWidth){
-                            if((ref.offsetLeft > container.scrollLeft+container.offsetWidth*(7/10))){
-                                doAnimate.current=true;
+                            if (ref.offsetLeft > container.scrollLeft && ref.offsetLeft < container.scrollLeft + container.offsetWidth) {
+                                if ((ref.offsetLeft > container.scrollLeft + container.offsetWidth * (7 / 10))) {
+                                    doAnimate.current = true;
+                                }
+                                if ((ref.offsetLeft < container.scrollLeft + container.offsetWidth * (3 / 10))) {
+                                    doAnimate.current = false;
+                                }
                             }
-                            if((ref.offsetLeft < container.scrollLeft+container.offsetWidth*(3/10))){
-                                doAnimate.current=false;
+                            else {
+                                doAnimate.current = false;
+                            }
+
+                            if (doAnimate.current) {
+                                container.scrollBy(40, 0);
                             }
                         }
-                        else{
-                            doAnimate.current = false;
-                        }
 
-                        if(doAnimate.current){
-                            container.scrollBy(40, 0);
-                        }
+
 
                     }
-                    , 1/100*1000);
+                    , 1 / 100 * 1000);
             }
 
 
-          
+
 
         }
     );
