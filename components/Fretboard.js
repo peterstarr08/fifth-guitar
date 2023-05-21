@@ -4,17 +4,17 @@ import { useRef } from "react";
 import { CHORD_FORMULA } from "@/data/constants";
 import ChordNote from "./Notes/ChordNote";
 
-function generateNote(note, isOpenFret = false, showEmpty=false) {
+function generateNote(note, isOpenFret = false, showEmpty=false, key) {
     if(showEmpty){
-        return <EmptyNote isOpenFret={isOpenFret}></EmptyNote>
+        return <EmptyNote key={key} isOpenFret={isOpenFret}></EmptyNote>
     }
     if(note["chordToneIndex"]){
-        return <ChordNote isOpenFret={isOpenFret}>{note.name}</ChordNote>
+        return <ChordNote key={key} isOpenFret={isOpenFret}>{note.name}</ChordNote>
     }
     if (note["isScaleTone"]) {
-        return <RootNote isOpenFret={isOpenFret}>{note.name}</RootNote>
+        return <RootNote key={key} isOpenFret={isOpenFret}>{note.name}</RootNote>
     }
-    return <EmptyNote isOpenFret={isOpenFret}></EmptyNote>
+    return <EmptyNote key={key} isOpenFret={isOpenFret}></EmptyNote>
 }
 
 /*
@@ -138,15 +138,15 @@ export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, 
         const perStringPlaceHolder = []; //div holder for each frets
         for (let j = 0; j < matrix[i].length; j++) {
             if (j == 0) {//use openNotePlaceHolder
-                openNotesPlaceholder.push(generateNote(matrix[i][j], true, ((i<range[0]||i>range[1]||j<range[2]||j>range[3])?true:false)));
+                openNotesPlaceholder.push(generateNote(matrix[i][j], true, ((i<range[0]||i>range[1]||j<range[2]||j>range[3])?true:false), "n"+i+j));
                 continue;
             }
             //Use perStringPlaceholder
             if (j == 1) {
-                perStringPlaceHolder.push(generateNote(matrix[i][j], true, ((i<range[0]||i>range[1]||j<range[2]||j>range[3])?true:false)));
+                perStringPlaceHolder.push(generateNote(matrix[i][j], true, ((i<range[0]||i>range[1]||j<range[2]||j>range[3])?true:false), "n"+i+j));
                 continue;
             }
-            perStringPlaceHolder.push(generateNote(matrix[i][j], false,((i<range[0]||i>range[1]||j<range[2]||j>range[3])?true:false)));
+            perStringPlaceHolder.push(generateNote(matrix[i][j], false,((i<range[0]||i>range[1]||j<range[2]||j>range[3])?true:false), "n"+i+j));
         }
         fretNotesPlaceholder.push( //div holder for each string
             <div className="relative">

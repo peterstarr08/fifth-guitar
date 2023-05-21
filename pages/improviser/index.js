@@ -69,7 +69,9 @@ export default function Improviser() {
     const metaData = [117, 4, -0.2];
     const [currentTime, setCurrentTime] = useState(0); //time keeper for player
     const [currentBeat, setCurrentBeat] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(false);
 
+    const timeLineContainer = useRef(null);
 
     const [currentChord, setCurrentChord] = useState(null);
 
@@ -101,6 +103,10 @@ export default function Improviser() {
         setRangePicker(value);
     };
 
+    function handleScroll(e){
+        e.target.scrollLeft = 10000;
+    }
+
     return (
         <>
             <Controller range={rangePicker} rangeHandler={ rangeHandler }></Controller>
@@ -108,16 +114,16 @@ export default function Improviser() {
 
                 <section className='grid grid-cols-12 my-8'>
                     <div className='col-span-4'>
-                        <Player YTData={setYTData} timeHandler={setCurrentTime} metaData={metaData} currentBeat={currentBeat} beatHandler={handleChordChanges}></Player>
+                        <Player YTData={setYTData} playSetter={setIsPlaying} timeHandler={setCurrentTime} metaData={metaData} currentBeat={currentBeat} beatHandler={handleChordChanges}></Player>
                     </div>
                     <div className='col-span-8 overflow-auto  ml-8'>
                         <section className="flex flex-col gap-4">
-                            <Fretboard keyToShow={"A"} scaleToShow={"minor"}></Fretboard>
+                            <Fretboard keyToShow={"A"} scaleToShow={"minor"} range={rangePicker}></Fretboard>
                         </section>
                     </div>
                 </section>
-                <div className="overflow-auto scroll-smooth my-8" >
-                    <Timeline data={data} position={currentBeat} clickHandler={timeLineClickHandler}></Timeline>
+                <div id="timeLineContainer" ref={timeLineContainer} className="overflow-auto  my-8" >
+                    <Timeline isPlaying={isPlaying} data={data} position={currentBeat} clickHandler={timeLineClickHandler} ></Timeline>
                 </div>
                 <div className="overflow-auto my-4">
                     <section className="flex flex-col gap-4 pb-72">
