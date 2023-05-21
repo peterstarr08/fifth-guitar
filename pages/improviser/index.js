@@ -110,7 +110,7 @@ export default function Improviser() {
     return (
         <>
             <Controller range={rangePicker} rangeHandler={ rangeHandler }></Controller>
-            <main className="mx-36">
+            <main className="mx-4 sm::mx-36">
 
                 <section className='grid grid-cols-12 my-8'>
                     <div className='col-span-4'>
