@@ -4,11 +4,11 @@ import { useRef } from "react";
 import { CHORD_FORMULA } from "@/data/constants";
 import ChordNote from "./Notes/ChordNote";
 
-function generateNote(note, isOpenFret = false, showEmpty=false, key) {
-    if(showEmpty){
+function generateNote(note, isOpenFret = false, showEmpty = false, key) {
+    if (showEmpty) {
         return <EmptyNote key={key} isOpenFret={isOpenFret}></EmptyNote>
     }
-    if(note["chordToneIndex"]){
+    if (note["chordToneIndex"]) {
         return <ChordNote key={key} isOpenFret={isOpenFret}>{note.name}</ChordNote>
     }
     if (note["isScaleTone"]) {
@@ -28,7 +28,7 @@ function generateNote(note, isOpenFret = false, showEmpty=false, key) {
     range: intArray(default whole scale) => The range of fretboard notes to be shown. In order, Highest String, Lowest String, Lowest Fret, Highest Fret
 
 */
-export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, chordNotesIncluded = [true, true, true, true, true], range=[0,5,0,25]}) {
+export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, chordNotesIncluded = [true, true, true, true, true], range = [0, 5, 0, 25] }) {
 
 
     const notesSharp = useRef(["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]);
@@ -45,10 +45,10 @@ export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, 
         }
     );
 
-     //Data storing a object containing 2x2 matrix of fretbaord, where each cell is a object containing
-     // 'name' of the note
-     //'octave' contains octave of the note
-     //'chordToneIndex' containes index of chord tone from generated chord array, contained -1 if it's not a chord tone
+    //Data storing a object containing 2x2 matrix of fretbaord, where each cell is a object containing
+    // 'name' of the note
+    //'octave' contains octave of the note
+    //'chordToneIndex' containes index of chord tone from generated chord array, contained -1 if it's not a chord tone
     const matrix = [];
 
 
@@ -70,15 +70,15 @@ export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, 
 
     //gets scale formula array for given name available in scales array
     const _scalesFormula = scales.current[scaleToShow];
- 
+
     //gets tuning array for givem tunnig, contains octave too.
     const _tuning = tunings.current['eStandard'];
     var _chordsFormula = null; //null because chordToShow could be a null value
     const chord = [];
     if (chordToShow != null) {//checks if it's not null
-        let _chordKey = chordToShow.slice(0,1);
-        _chordsFormula =CHORD_FORMULA[chordToShow.slice(1)];
-        for (let i = 0; i < _chordsFormula.length; i++){//loops over chord formula
+        let _chordKey = chordToShow.slice(0, 1);
+        _chordsFormula = CHORD_FORMULA[chordToShow.slice(1)];
+        for (let i = 0; i < _chordsFormula.length; i++) {//loops over chord formula
             if (chordNotesIncluded[i]) {    //only include if the chordNotesIncluded array contains true for that particular note.
                 chord.push(noteIncrementer(_chordKey, _chordsFormula[i]));  //increment the key by chord formula and push it into chord notes array.
             }
@@ -103,7 +103,7 @@ export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, 
                     {   //self explanatory
                         "name": openNote,
                         "octave": openOctave,
-                        "chordToneIndex": chord.indexOf(openNote)>=0,
+                        "chordToneIndex": chord.indexOf(openNote) >= 0,
                         "isScaleTone": scale.indexOf(openNote) >= 0,
                     }
                 );
@@ -118,7 +118,7 @@ export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, 
                 {   //self exaplanatory
                     "name": nextNote,
                     "octave": openOctave,
-                    "chordToneIndex": chord.indexOf(nextNote)>=0,
+                    "chordToneIndex": chord.indexOf(nextNote) >= 0,
                     "isScaleTone": scale.indexOf(nextNote) >= 0,
 
                 }
@@ -138,15 +138,15 @@ export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, 
         const perStringPlaceHolder = []; //div holder for each frets
         for (let j = 0; j < matrix[i].length; j++) {
             if (j == 0) {//use openNotePlaceHolder
-                openNotesPlaceholder.push(generateNote(matrix[i][j], true, ((i<range[0]||i>range[1]||j<range[2]||j>range[3])?true:false), "n"+i+j));
+                openNotesPlaceholder.push(generateNote(matrix[i][j], true, ((i < range[0] || i > range[1] || j < range[2] || j > range[3]) ? true : false), "n" + i + j));
                 continue;
             }
             //Use perStringPlaceholder
             if (j == 1) {
-                perStringPlaceHolder.push(generateNote(matrix[i][j], true, ((i<range[0]||i>range[1]||j<range[2]||j>range[3])?true:false), "n"+i+j));
+                perStringPlaceHolder.push(generateNote(matrix[i][j], true, ((i < range[0] || i > range[1] || j < range[2] || j > range[3]) ? true : false), "n" + i + j));
                 continue;
             }
-            perStringPlaceHolder.push(generateNote(matrix[i][j], false,((i<range[0]||i>range[1]||j<range[2]||j>range[3])?true:false), "n"+i+j));
+            perStringPlaceHolder.push(generateNote(matrix[i][j], false, ((i < range[0] || i > range[1] || j < range[2] || j > range[3]) ? true : false), "n" + i + j));
         }
         fretNotesPlaceholder.push( //div holder for each string
             <div className="relative">
@@ -155,15 +155,47 @@ export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, 
         );
     }
 
+    const label = [];
+    for (let i = 0; i <= 24; i++) {
+        label.push(i);
+    }
     return (
-        <section className="flex flex-row justify-start">
-            <div className="flex flex-col">
-                {openNotesPlaceholder}
-            </div>
-            <div className="flex flex-col">
-                {fretNotesPlaceholder}
-            </div>
-        </section>
+        <>
+            <main className="flex flex-col justify-start">
+                <section className="flex flex-row self-baseline">
+                    {label.map((label, index) => <div key={index} className="w-[72px] h-fit py-1 text-center">{label}</div>)}
+                </section>
+                <section className="flex flex-row justify-start">
+                    <div className="flex flex-col">
+                        {openNotesPlaceholder}
+                    </div>
+                    <div className="flex flex-col">
+                        {fretNotesPlaceholder}
+                    </div>
+                </section>
+                <section className="flex flex-row self-baseline">
+                    {label.map((label,index) => {
+                        if (label == 3 || label == 5 || label == 7 || label == 9 || label == 15 || label == 17 || label == 19 || label == 21) {
+                            return (
+                                <div key={index} className="w-[72px] h-fit py-1 flex flex-row justify-end pr-2">
+                                    <div className="w-2 h-2 rounded-full bg-slate-950"></div>
+                                </div>
+                            );
+                        }
+                        else if (label == 12 || label == 24) {
+                            return (
+                                <div key={index} className="w-[72px] h-fit py-1 flex flex-row gap-1 justify-end pr-2">
+                                <div className="w-2 h-2 rounded-full bg-slate-950"></div>
+                                <div className="w-2 h-2 rounded-full bg-slate-950"></div>
+                                </div>
+                            );
+                        }
+
+                        return (<div key={index} className="w-[72px] h-fit py-1 text-center"></div>);
+                    })}
+                </section>
+            </main>
+        </>
     );
 
 }

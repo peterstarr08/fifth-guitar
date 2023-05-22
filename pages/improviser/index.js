@@ -1,5 +1,6 @@
 import Fretboard from "@/components/Fretboard";
 import Controller from "@/components/Improviser/Controller";
+import Reference from "@/components/Improviser/Reference";
 import Timeline from "@/components/Improviser/Timeline";
 import Player from "@/components/Player";
 
@@ -66,7 +67,7 @@ export default function Improviser() {
 
 
     ];// temporary holder for data, m-Minor M-major, 7-major7, &-minor7, s-flat6
-    const metaData = [117, 4, -0.2];
+    const metaData = [117, 4, -0.2, ["Am","CM","F7","GM","Dm","F7","Es"]];
     const [currentTime, setCurrentTime] = useState(0); //time keeper for player
     const [currentBeat, setCurrentBeat] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -110,7 +111,7 @@ export default function Improviser() {
     return (
         <>
             <Controller range={rangePicker} rangeHandler={rangeHandler}></Controller>
-            <main className="mx-4 sm::mx-36 ">
+            <main className="mx-4 ">
 
                 <div className="max-w- m-auto">
                     <section className='grid grid-cols-12 my-8'>
@@ -119,7 +120,7 @@ export default function Improviser() {
                         </div>
                         <div className='col-span-8 overflow-auto  ml-8'>
                             <section className="flex flex-col gap-4">
-                                <Fretboard keyToShow={"A"} scaleToShow={"minor"} range={rangePicker}></Fretboard>
+                                <Reference keyToShow={"A"} scaleToShow={"minor"} range={rangePicker} metaData={metaData}></Reference>
                             </section>
                         </div>
                     </section>
@@ -134,6 +135,7 @@ export default function Improviser() {
                     </div>
                 </div>
             </main>
+           
         </>
     );
 }
