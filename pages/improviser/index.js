@@ -77,6 +77,7 @@ export default function Improviser() {
     const [currentChord, setCurrentChord] = useState(null);
 
     const [rangePicker, setRangePicker] = useState([0, 3, 7, 12]); // range picker for strings and frets substrings to show
+    const [chordPicker, setChordPicker] = useState([true,true, true, true, true]);
 
     const [YTData, setYTData] = useState(null);
 
@@ -110,10 +111,10 @@ export default function Improviser() {
 
     return (
         <>
-            <Controller range={rangePicker} rangeHandler={rangeHandler}></Controller>
+            <Controller range={rangePicker} rangeHandler={rangeHandler} chordPicker={chordPicker} handleChordPicker={setChordPicker}></Controller>
             <main className="mx-4 ">
 
-                <div className="max-w- m-auto">
+                <div className="h-fit m-auto">
                     <section className='grid grid-cols-12 my-8'>
                         <div className='col-span-4'>
                             <Player YTData={setYTData} playSetter={setIsPlaying} timeHandler={setCurrentTime} metaData={metaData} currentBeat={currentBeat} beatHandler={handleChordChanges}></Player>
@@ -129,7 +130,7 @@ export default function Improviser() {
                     </div>
                     <div className="overflow-auto my-4">
                         <section className="flex flex-col gap-4 ">
-                            <Fretboard keyToShow={"A"} scaleToShow={"minor"} chordToShow={currentChord} range={rangePicker}></Fretboard>
+                            <Fretboard keyToShow={"A"} scaleToShow={"minor"} chordToShow={currentChord} range={rangePicker} chordNotesIncluded={chordPicker}></Fretboard>
                             {/* <Fretboard keyToShow={"E"} scaleToShow={"major"} range={rangePicker}></Fretboard> */}
                         </section>
                     </div>

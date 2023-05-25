@@ -29,7 +29,7 @@ export default function Reference({keyToShow, scaleToShow, range, metaData}){
     return(
         <>
             <Fretboard keyToShow={"A"} scaleToShow={"minor"} chordToShow={currentChord} range={range}></Fretboard>
-            <CustomRadioButton data={data.current} stateSetter={handleStateSetter}></CustomRadioButton>
+            <CustomRadioButton keyPrefix={"ref"} data={data.current} stateSetter={handleStateSetter}></CustomRadioButton>
         </>
     );
 }
