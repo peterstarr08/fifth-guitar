@@ -32,7 +32,7 @@ export default function Home() {
 
       {/* Random Comment */}
       <div className='relative w-8 h-8 mx-auto mt-36'>
-        <Image src={"/cube.svg"} fill></Image>
+        <Image alt='' src={"/cube.svg"} fill></Image>
       </div>
       <p className='font-medium text-sm opacity-80 my-20 m-auto'>Interactive Learning</p>
       <section className='flex flex-row justify-between mx-auto gap-20 w-fit'>
@@ -44,7 +44,7 @@ export default function Home() {
           <div className='z-10  w-fit h-fit rounded-3xl bg-white'>
             <div className='flex flex-col justify-between mx-auto items-center'>
               <div className='relative w-[300px] h-[230px] my-4 mx-4'>
-                <Image fill src={"improviser.svg"}></Image>
+                <Image alt='' fill src={"improviser.svg"}></Image>
               </div>
               <p className='max-w-[300px] px-4 text-center font-medium opacity-70 pb-8'>
                 Lorem ipsum dolor sit amet consectetur..Lorem ipsum dolor sit amet consectetur..
@@ -60,7 +60,7 @@ export default function Home() {
           <div className='z-10  w-fit h-fit rounded-3xl bg-white'>
             <div className='flex flex-col justify-between mx-auto items-center'>
               <div className='relative w-[300px] h-[230px] my-4 mx-4'>
-                <Image fill src={"transcriber.svg"}></Image>
+                <Image alt='' fill src={"transcriber.svg"}></Image>
               </div>
               <p className='max-w-[300px] px-4 text-center font-medium opacity-70 pb-8'>
                 Lorem ipsum dolor sit amet consectetur..Lorem ipsum dolor sit amet consectetur..
@@ -76,7 +76,7 @@ export default function Home() {
           <div className='z-10  w-fit h-fit rounded-3xl bg-white'>
             <div className='flex flex-col justify-between mx-auto items-center'>
               <div className='relative w-[300px] h-[230px] my-4 mx-5'>
-                <Image fill src={"scales.svg"}></Image>
+                <Image alt='' fill src={"scales.svg"}></Image>
               </div>
               <p className='max-w-[300px] px-4 text-center font-medium opacity-70 pb-8'>
                 Lorem ipsum dolor sit amet consectetur..Lorem ipsum dolor sit amet consectetur..
