@@ -64,7 +64,7 @@ export default function Home() {
                 <Image alt='d' fill src={"transcriber.svg"}></Image>
               </div>
               <p className='max-w-[300px] px-4 text-center font-medium opacity-70 pb-8'>
-                A looper help your learn song by ear and some essential features to ease the process. Coming soon...
+                A looper to help learn song by ear and some essential features to ease the process. Coming soon...
               </p>
               <p className='mb-8'>Coming soon!</p>
             </div>
@@ -81,7 +81,7 @@ export default function Home() {
                 <Image alt='e' fill src={"scales.svg"}></Image>
               </div>
               <p className='max-w-[300px] px-4 text-center font-medium opacity-70 pb-8'>
-                An advanced guitar scale & arpeggio so that you can learn, or create music with no hassle! Coming soon!
+                An advanced guitar scale & arpeggio so that you can learn, or create music with ease! Coming soon!
               </p>
               <p className='mb-8'>Coming soon!</p>
             </div>
@@ -89,7 +89,8 @@ export default function Home() {
         </div>
         
       </section>
-      <p className='inline-block my-28'>This website is in continuous development stage, keep visiting &#59; &#41;</p>
+      <p className='inline-block my-28'>This website is in continuous development stage, keep visiting &#59; &#41; Contact us: thefifthguitar@gmail.com</p>
+
     </main>
   )
 }
