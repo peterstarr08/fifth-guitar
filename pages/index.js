@@ -25,7 +25,7 @@ export default function Home() {
         </div>
         <div>
           <div className='relative w-[372px] h-[452px]'>
-            <Image fill src={"/hero.svg"}></Image>
+            <Image alt='' fill src={"/hero.svg"}></Image>
           </div>
         </div>
       </section>
