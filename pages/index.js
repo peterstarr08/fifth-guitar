@@ -20,7 +20,7 @@ export default function Home() {
           </p>
           <section className='flex flex-row justify-start pt-2 gap-3'>
             <input className='w-96 py-2 px-4 rounded-full outline-gray-500 border-2 border-gray-400' type={'text'} placeholder='Join the mail list!'></input>
-            <button className='px-8 py-1 bg-blue-700 whitespace-nowrap rounded-full text-white font-bold'>I'm in!</button>
+            <button className='px-8 py-1 bg-blue-700 whitespace-nowrap rounded-full text-white font-bold'>I&apos;m in!</button>
           </section>
         </div>
         <div>
