@@ -76,7 +76,7 @@ export default function Home() {
           <div className='z-10  w-fit h-fit rounded-3xl bg-white'>
             <div className='flex flex-col justify-between mx-auto items-center'>
               <div className='relative w-[300px] h-[230px] my-4 mx-5'>
-                <Image alt='' fill src={"scales.svg"}></Image>
+                <Image alt='b' fill src={"scales.svg"}></Image>
               </div>
               <p className='max-w-[300px] px-4 text-center font-medium opacity-70 pb-8'>
                 Lorem ipsum dolor sit amet consectetur..Lorem ipsum dolor sit amet consectetur..
