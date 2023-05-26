@@ -29,6 +29,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Random Comment */}
       <div className='relative w-8 h-8 mx-auto mt-36'>
         <Image src={"/cube.svg"} fill></Image>
       </div>
@@ -44,7 +46,7 @@ export default function Home() {
               <div className='relative w-[300px] h-[230px] my-4 mx-4'>
                 <Image fill src={"improviser.svg"}></Image>
               </div>
-              <p className='max-w-[300px] px-4 text-center font-medium opacity-60 pb-8'>
+              <p className='max-w-[300px] px-4 text-center font-medium opacity-70 pb-8'>
                 Lorem ipsum dolor sit amet consectetur..Lorem ipsum dolor sit amet consectetur..
               </p>
             </div>
@@ -60,7 +62,7 @@ export default function Home() {
               <div className='relative w-[300px] h-[230px] my-4 mx-4'>
                 <Image fill src={"transcriber.svg"}></Image>
               </div>
-              <p className='max-w-[300px] px-4 text-center font-medium opacity-60 pb-8'>
+              <p className='max-w-[300px] px-4 text-center font-medium opacity-70 pb-8'>
                 Lorem ipsum dolor sit amet consectetur..Lorem ipsum dolor sit amet consectetur..
               </p>
             </div>
@@ -76,7 +78,7 @@ export default function Home() {
               <div className='relative w-[300px] h-[230px] my-4 mx-5'>
                 <Image fill src={"scales.svg"}></Image>
               </div>
-              <p className='max-w-[300px] px-4 text-center font-medium opacity-60 pb-8'>
+              <p className='max-w-[300px] px-4 text-center font-medium opacity-70 pb-8'>
                 Lorem ipsum dolor sit amet consectetur..Lorem ipsum dolor sit amet consectetur..
               </p>
             </div>
