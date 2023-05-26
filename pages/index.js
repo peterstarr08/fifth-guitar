@@ -9,11 +9,11 @@ export default function Home() {
     <main className='flex flex-col gap-0 justify-center max-w-7xl m-auto'>
       <section className='flex flex-row  justify-center gap-24 '>
         <div>
-          <h1 className='text-transparent text-7xl font-bold bg-clip-text bg-gradient-to-r from-blue-700 to-rose-600'>Lorem? Ipsum dolor?<br />
-            Sit amet!
+          <h1 className='text-transparent text-7xl font-bold bg-clip-text bg-gradient-to-r from-blue-700 to-rose-600'>Want to improvise? Or Transcribe?<br />
+            Fifth Guitar!
           </h1>
           <h2 className='max-w-xl text-xl opacity-70 font-bold pt-11'>
-            Lorem ipsum dolor sit amet consectetur. Vulputate cras tincidunt tempus ut ut lacus augue. Elementum quis ridiculus sed sed.
+            FifthGuitar is an interactive way to improve or develop skills. Dedicated for intermediate player!
           </h2>
           <p className='text-sm font-semibold text-slate-600 pt-11'>
             Your email<span className='text-red-500'>*</span>
@@ -47,8 +47,9 @@ export default function Home() {
                 <Image alt='c' fill src={"improviser.svg"}></Image>
               </div>
               <p className='max-w-[300px] px-4 text-center font-medium opacity-70 pb-8'>
-                Lorem ipsum dolor sit amet consectetur..Lorem ipsum dolor sit amet consectetur..
+                Click the below link to start an interactive improvisation. More demos coming soon!
               </p>
+              <p className='mb-8 text-blue-600 hover:underline'><Link href={"/improviser"}>Click here to start a demo!</Link></p>
             </div>
           </div>
         </div>
@@ -63,8 +64,9 @@ export default function Home() {
                 <Image alt='d' fill src={"transcriber.svg"}></Image>
               </div>
               <p className='max-w-[300px] px-4 text-center font-medium opacity-70 pb-8'>
-                Lorem ipsum dolor sit amet consectetur..Lorem ipsum dolor sit amet consectetur..
+                A looper help your learn song by ear and some essential features to ease the process. Coming soon...
               </p>
+              <p className='mb-8'>Coming soon!</p>
             </div>
           </div>
         </div>
@@ -79,13 +81,15 @@ export default function Home() {
                 <Image alt='e' fill src={"scales.svg"}></Image>
               </div>
               <p className='max-w-[300px] px-4 text-center font-medium opacity-70 pb-8'>
-                Lorem ipsum dolor sit amet consectetur..Lorem ipsum dolor sit amet consectetur..
+                An advanced guitar scale & arpeggio so that you can learn, or create music with no hassle! Coming soon!
               </p>
+              <p className='mb-8'>Coming soon!</p>
             </div>
           </div>
         </div>
-
+        
       </section>
+      <p className='inline-block my-28'>This website is in continuous development stage, keep visiting &#59; &#41;</p>
     </main>
   )
 }
