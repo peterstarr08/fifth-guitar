@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <main className='w-fit mx-auto'>
-      <main className='flex flex-col gap-0 justify-center max-w-7xl mx-16'>
+      <main className='flex flex-col gap-0 justify-center max-w-7xl mx-16 md:mx-10'>
         <section className='flex flex-row max-w-fit items-center  justify-between gap-24 xl:flex-col'>
           <div>
             <h1 className='xl:text-5xl max-w-lg text-transparent text-7xl font-bold bg-clip-text bg-gradient-to-r from-blue-700 to-rose-600'>Want to improvise? Or Transcribe?<br />
