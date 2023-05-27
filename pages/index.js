@@ -7,12 +7,12 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <main className='flex flex-col gap-0 justify-center max-w-7xl m-auto'>
-      <section className='flex flex-row  justify-center gap-24 '>
+      <section className='flex flex-row  justify-center gap-24 md:flex-col md:px-14'>
         <div>
-          <h1 className='text-transparent text-7xl font-bold bg-clip-text bg-gradient-to-r from-blue-700 to-rose-600'>Want to improvise? Or Transcribe?<br />
+          <h1 className='md:text-5xl text-transparent text-7xl font-bold bg-clip-text bg-gradient-to-r from-blue-700 to-rose-600'>Want to improvise? Or Transcribe?<br />
             Fifth Guitar!
           </h1>
-          <h2 className='max-w-xl text-xl opacity-70 font-bold pt-11'>
+          <h2 className='md:text-base max-w-xl text-xl opacity-70 font-bold pt-11'>
             FifthGuitar is an interactive way to improve or develop skills. Dedicated for intermediate player!
           </h2>
           <p className='text-sm font-semibold text-slate-600 pt-11'>
@@ -24,7 +24,7 @@ export default function Home() {
           </section>
         </div>
         <div>
-          <div className='relative w-[372px] h-[452px]'>
+          <div className='relative mx-auto w-[23.25rem] h-[28.25rem] md:w-[17.4375rem] md:h-[21.435rem]'>
             <Image alt='a' fill src={"/hero.svg"}></Image>
           </div>
         </div>
@@ -35,7 +35,7 @@ export default function Home() {
         <Image alt='b' src={"/cube.svg"} fill></Image>
       </div>
       <p className='font-medium text-sm opacity-80 my-20 m-auto'>Interactive Learning</p>
-      <section className='flex flex-row justify-between mx-auto gap-20 w-fit'>
+      <section className='flex flex-row justify-between mx-auto gap-20 w-fit md:flex-col'>
 
         <div className='relative flex flex-col items-center flex-grow'>
           <div className='-z-10 absolute w-4/5 mx-auto blur-2xl h-full translate-y-9 rounded-3xl bg-gradient-45 from-blue-700 to-rose-600'>
