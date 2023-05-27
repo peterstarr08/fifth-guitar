@@ -27,9 +27,12 @@ export default function Reference({keyToShow, scaleToShow, range, metaData}){
     );
 
     return(
-        <>
+        <div>
+            <p className="text-sm font-medium text-black text-opacity-25 my-1">Reference</p>
             <Fretboard keyToShow={"A"} scaleToShow={"minor"} chordToShow={currentChord} range={range}></Fretboard>
+            <div className="my-2">
             <CustomRadioButton keyPrefix={"ref"} data={data.current} stateSetter={handleStateSetter}></CustomRadioButton>
-        </>
+            </div>
+        </div>
     );
 }

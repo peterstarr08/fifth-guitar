@@ -11,7 +11,7 @@ export default function Player({ timeHandler, metaData, currentBeat ,beatHandler
 
     //opts for size of YT player
     const opts = {
-        height: '300px',
+        height: '380px',
         width: '100%',
     }
 
@@ -49,6 +49,6 @@ export default function Player({ timeHandler, metaData, currentBeat ,beatHandler
     // }
 
     return (
-        <YouTube onPause={handlePause} onPlay={handlePlay} opts={opts} videoId={"HXuAqmwM3C4"} onReady={onReady}></YouTube>
+        <YouTube  onPause={handlePause} onPlay={handlePlay} opts={opts} videoId={"HXuAqmwM3C4"} onReady={onReady}></YouTube>
     );
 }

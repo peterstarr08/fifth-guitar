@@ -4,9 +4,9 @@ import TextInput from "../TextInput";
 import CustomCheckBox from "../CustomCheckBox";
 
 export default function Controller({ range, rangeHandler, chordPicker, handleChordPicker }) {
- 
 
-    const CHORD_PCIKER=[
+
+    const CHORD_PCIKER = [
         {
             id: 0,
             toShow: chordPicker[0],
@@ -45,7 +45,7 @@ export default function Controller({ range, rangeHandler, chordPicker, handleCho
             _chordPicker[e] = true;
         }
 
-        handleChordPicker(_chordPicker);        
+        handleChordPicker(_chordPicker);
 
     }
 
@@ -84,16 +84,18 @@ export default function Controller({ range, rangeHandler, chordPicker, handleCho
 
     }
     return (
-        <div className="fixed z-20 w-full h-fit py-2 bottom-0 left-0 border-t-4 border-sky-600  bg-white ">
-            <div className="flex flex-row justify-between">
-                <div>
-                    <CustomCheckBox data={CHORD_PCIKER} keyPrefix={"chr"} stateSetter={handleChordSelector}></CustomCheckBox>
-                </div>
-                <div className="flex flex-row gap-2 ml-4">
-                    <TextInput handleChange={handleLowString} defaultValue={range[0] + 1}>From String</TextInput>
-                    <TextInput handleChange={handleHighString} defaultValue={range[1] + 1}>To String</TextInput>
-                    <TextInput handleChange={handleLeftFret} defaultValue={range[2]}>From Fret</TextInput>
-                    <TextInput handleChange={handleRightFret} defaultValue={range[3]}>To Fret</TextInput>
+        <div className="fixed  z-20  w-full h-fit pt-[0.25rem] bottom-0 left-0 border-t-4 bg-gradient-to-r from-blue-700 to-rose-600  bg-white ">
+            <div className="bg-white px-8">
+                <div className="flex flex-row justify-between md:flex-col items-center">
+                    <div className="my-2 items-center">
+                        <CustomCheckBox data={CHORD_PCIKER} keyPrefix={"chr"} stateSetter={handleChordSelector}></CustomCheckBox>
+                    </div>
+                    <div className="flex gap-2 flex-row my-4">
+                        <TextInput handleChange={handleLowString} defaultValue={range[0] + 1}>From String</TextInput>
+                        <TextInput handleChange={handleHighString} defaultValue={range[1] + 1}>To String</TextInput>
+                        <TextInput handleChange={handleLeftFret} defaultValue={range[2]}>From Fret</TextInput>
+                        <TextInput handleChange={handleRightFret} defaultValue={range[3]}>To Fret</TextInput>
+                    </div>
                 </div>
             </div>
         </div>

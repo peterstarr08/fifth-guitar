@@ -67,7 +67,7 @@ export default function Improviser() {
 
 
     ];// temporary holder for data, m-Minor M-major, 7-major7, &-minor7, s-flat6
-    const metaData = [117, 4, -0.2, ["Am","CM","F7","GM","Dm","F7","Es"]];
+    const metaData = [117, 4, -0.2, ["Am", "CM", "F7", "GM", "Dm", "F7", "Es"]];
     const [currentTime, setCurrentTime] = useState(0); //time keeper for player
     const [currentBeat, setCurrentBeat] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -77,7 +77,7 @@ export default function Improviser() {
     const [currentChord, setCurrentChord] = useState(null);
 
     const [rangePicker, setRangePicker] = useState([0, 3, 7, 12]); // range picker for strings and frets substrings to show
-    const [chordPicker, setChordPicker] = useState([true,true, true, true, true]);
+    const [chordPicker, setChordPicker] = useState([true, true, true, true, true]);
 
     const [YTData, setYTData] = useState(null);
 
@@ -112,31 +112,38 @@ export default function Improviser() {
     return (
         <>
             <Controller range={rangePicker} rangeHandler={rangeHandler} chordPicker={chordPicker} handleChordPicker={setChordPicker}></Controller>
-            <main className="mx-4 ">
+            <main className="max-w-[120rem]  mx-auto">
+                {/* <p className="mx-auto text-center mt-4">Backing Track in by Elevated Jam Tracks</p> */}
+                <div className=" mx-16 xl:mx-10">
 
-                <div className="h-fit m-auto">
-                    <section className='grid grid-cols-12 my-8'>
-                        <div className='col-span-4'>
-                            <Player YTData={setYTData} playSetter={setIsPlaying} timeHandler={setCurrentTime} metaData={metaData} currentBeat={currentBeat} beatHandler={handleChordChanges}></Player>
-                        </div>
-                        <div className='col-span-8 overflow-auto  ml-8'>
-                            <section className="flex flex-col gap-4">
-                                <Reference keyToShow={"A"} scaleToShow={"minor"} range={rangePicker} metaData={metaData}></Reference>
-                            </section>
-                        </div>
-                    </section>
-                    <div id="timeLineContainer" ref={timeLineContainer} className="overflow-auto  my-8" >
-                        <Timeline isPlaying={isPlaying} data={data} position={currentBeat} clickHandler={timeLineClickHandler} ></Timeline>
-                    </div>
-                    <div className="overflow-auto my-4">
-                        <section className="flex flex-col gap-4 ">
-                            <Fretboard keyToShow={"A"} scaleToShow={"minor"} chordToShow={currentChord} range={rangePicker} chordNotesIncluded={chordPicker}></Fretboard>
-                            {/* <Fretboard keyToShow={"E"} scaleToShow={"major"} range={rangePicker}></Fretboard> */}
+                    <div className="flex flex-col mx-auto">
+                        <section className=' flex flex-row   my-8 xl:flex-col '>
+                            <div className='w-[50vw] xl:w-full'>
+                                <Player YTData={setYTData} playSetter={setIsPlaying} timeHandler={setCurrentTime} metaData={metaData} currentBeat={currentBeat} beatHandler={handleChordChanges}></Player>
+                            </div>
+                            <div className='overflow-auto  ml-8 xl:ml-0 '>
+                                <section className="items-center">
+                                    <Reference keyToShow={"A"} scaleToShow={"minor"} range={rangePicker} metaData={metaData}></Reference>
+                                </section>
+                            </div>
                         </section>
+
+                        <div id="timeLineContainer" ref={timeLineContainer} className="overflow-auto  my-8" >
+                            <Timeline isPlaying={isPlaying} data={data} position={currentBeat} clickHandler={timeLineClickHandler} ></Timeline>
+                        </div>
                     </div>
+
+
                 </div>
+                <div className="overflow-auto my-4 mx-4">
+                    <section className="flex flex-col items-center gap-4 ">
+                        <Fretboard keyToShow={"A"} scaleToShow={"minor"} chordToShow={currentChord} range={rangePicker} chordNotesIncluded={chordPicker}></Fretboard>
+                        {/* <Fretboard keyToShow={"E"} scaleToShow={"major"} range={rangePicker}></Fretboard> */}
+                    </section>
+                </div>
+                <div className="w-full h-20 xl:h-52" />
             </main>
-           
+
         </>
     );
 }

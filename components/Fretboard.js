@@ -150,7 +150,7 @@ export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, 
         }
         fretNotesPlaceholder.push( //div holder for each string
             <div className="relative">
-                <div className="flex flex-row before:absolute before:left-0 before:top-0 before:-z-0 before:border-opacity-60 before:block before:h-1/2 before:w-full before:border-b-2 before:border-black">{perStringPlaceHolder}</div>
+                <div className="flex flex-row before:absolute before:left-0 before:top-0 before:-z-0 before:border-opacity-50 before:block before:h-1/2 before:w-full before:border-b-2 before:border-black">{perStringPlaceHolder}</div>
             </div>
         );
     }
@@ -163,13 +163,13 @@ export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, 
         <>
             <main className="flex flex-col justify-start">
                 <section className="flex flex-row self-baseline">
-                    {label.map((label, index) => <div key={index} className="w-[72px] h-fit py-1 text-center">{label}</div>)}
+                    {label.map((label, index) => <div key={index} className="w-[72px] h-fit py-1 text-center text-sm text-opacity-50 text-black">{label}</div>)}
                 </section>
                 <section className="flex flex-row justify-start">
                     <div className="flex flex-col">
                         {openNotesPlaceholder}
                     </div>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col bg-[#d9d9d9] bg-opacity-10">
                         {fretNotesPlaceholder}
                     </div>
                 </section>
@@ -178,15 +178,15 @@ export default function Fretboard({ keyToShow, scaleToShow, chordToShow = null, 
                         if (label == 3 || label == 5 || label == 7 || label == 9 || label == 15 || label == 17 || label == 19 || label == 21) {
                             return (
                                 <div key={index} className="w-[72px] h-fit py-1 flex flex-row justify-end pr-2">
-                                    <div className="w-2 h-2 rounded-full bg-slate-950"></div>
+                                    <div className="w-2 h-2 rounded-full bg-slate-950 bg-opacity-50"></div>
                                 </div>
                             );
                         }
                         else if (label == 12 || label == 24) {
                             return (
                                 <div key={index} className="w-[72px] h-fit py-1 flex flex-row gap-1 justify-end pr-2">
-                                <div className="w-2 h-2 rounded-full bg-slate-950"></div>
-                                <div className="w-2 h-2 rounded-full bg-slate-950"></div>
+                                <div className="w-2 h-2 rounded-full bg-slate-950 bg-opacity-50"></div>
+                                <div className="w-2 h-2 rounded-full bg-slate-950 bg-opacity-50"></div>
                                 </div>
                             );
                         }

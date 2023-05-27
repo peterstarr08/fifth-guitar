@@ -22,3 +22,7 @@
 body{
   background-color: #f9f9f9
 }
+
+.border-gradient-purple {
+  border-image-source: linear-gradient(135deg, #743ad5, #d53a9d);
+}
