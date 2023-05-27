@@ -134,16 +134,22 @@ export default function Improviser() {
                     </div>
 
 
+
                 </div>
-                <div className="overflow-auto my-4 mx-4">
-                    <section className="flex flex-col items-center gap-4 ">
-                        <Fretboard keyToShow={"A"} scaleToShow={"minor"} chordToShow={currentChord} range={rangePicker} chordNotesIncluded={chordPicker}></Fretboard>
-                        {/* <Fretboard keyToShow={"E"} scaleToShow={"major"} range={rangePicker}></Fretboard> */}
-                    </section>
+               
+                <div className=" max-w-full w-fit mx-auto">
+                  
+                
+                  <div className="overflow-auto mx-8">
+                  <Fretboard keyToShow={"A"} scaleToShow={"minor"} chordToShow={currentChord} range={rangePicker} chordNotesIncluded={chordPicker}></Fretboard>
+                  </div>
+                
+ 
+                
                 </div>
-                <div className="w-full h-20 xl:h-52" />
             </main>
 
+            <div className="w-full h-20 xl:h-52" />
         </>
     );
 }
